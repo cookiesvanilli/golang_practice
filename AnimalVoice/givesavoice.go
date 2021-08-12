@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type Givesavoice interface {
-	SayHello()
+	SayHello() string
 }
 
 type Cat struct {
@@ -16,15 +16,18 @@ type Bee struct {
 	greeting  string
 }
 
-func (c Cat) SayHello() {//Cat
+func (c *Cat) SayHello() string {//Cat
 	fmt.Println("Cat: MEOW")
+	return "MEOW"
 }
-func (d Dog) SayHello()  {//Dog
+func (d *Dog) SayHello()  string {//Dog
 	fmt.Println("Dog: WOFF")
+	return "WOFF"
 
 }
-func (b Bee) SayHello() {//Bird
+func (b *Bee) SayHello() string  {//Bird
 	fmt.Println("Bee: BZZ")
+	return "BZZ"
 
 }
 func AnimalVoice(a Givesavoice) {
@@ -32,11 +35,11 @@ func AnimalVoice(a Givesavoice) {
 }
 
 func main() {
-	c := Cat{greeting : "meow"}
+	c := &Cat{greeting : "meow"}
 	AnimalVoice(c)
-	d := Dog{greeting : "woff"}
+	d := &Dog{greeting : "woff"}
 	AnimalVoice(d)
-	b := Bee{greeting : "bzz"}
+	b := &Bee{greeting : "bzz"}
 	AnimalVoice(b)
 }
 
