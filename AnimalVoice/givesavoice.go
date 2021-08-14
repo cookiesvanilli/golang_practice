@@ -3,9 +3,8 @@ package main
 import "fmt"
 
 type Givesavoice interface {
-	SayHello() string
+	sayHello() string
 }
-
 type Cat struct {
     greeting string
 }
@@ -15,31 +14,27 @@ type Dog struct {
 type Bee struct {
 	greeting  string
 }
-
-func (c *Cat) SayHello() string {//Cat
+func (c *Cat) sayHello() string { //Cat
 	fmt.Println("Cat: MEOW")
 	return "MEOW"
 }
-func (d *Dog) SayHello()  string {//Dog
+func (d *Dog) sayHello()  string { //Dog
 	fmt.Println("Dog: WOFF")
 	return "WOFF"
-
 }
-func (b *Bee) SayHello() string  {//Bird
+func (b *Bee) sayHello() string  { //Bird
 	fmt.Println("Bee: BZZ")
 	return "BZZ"
-
 }
-func AnimalVoice(a Givesavoice) {
-	a.SayHello()
+func animalVoice(list ...Givesavoice) {
+	for _, a := range list {
+		a.sayHello()
+	}
 }
-
 func main() {
 	c := &Cat{greeting : "meow"}
-	AnimalVoice(c)
 	d := &Dog{greeting : "woff"}
-	AnimalVoice(d)
 	b := &Bee{greeting : "bzz"}
-	AnimalVoice(b)
+	animalVoice(c,d,b)
 }
 
