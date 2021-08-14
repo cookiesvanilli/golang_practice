@@ -70,16 +70,16 @@ func (q *Quieter) SayHelloQuite() string {
 	return shout
 }
 func main() {
-c:= Cat{"Cat: MEOW"}
-c.SayHelloLoud()
-d:= Dog{ "Dog: WOFF"}
-d.SayHelloLoud()
-b:= Bird{ "Bird: WEE-TWEET-TWEET"}
-b.SayHelloLoud()
-e:= Bee{"Bee: BZZZ"}
-e.SayHelloLoud()
-o:= Cow{"MOO"}
-o.SayHelloLoud()
-cq:=Cat{"meow"}
-cq.SayHelloQuiet()
+	c:= Cat{"Cat: MEOW"}
+	c.SayHelloLoud()
+	d:= Dog{ "Dog: WOFF"}
+	d.SayHelloLoud()
+	b:= Bird{ "Bird: WEE-TWEET-TWEET"}
+	b.SayHelloLoud()
+	e:= Bee{"Bee: BZZZ"}
+	e.SayHelloLoud()
+	o:= Cow{"MOO"}
+	o.SayHelloLoud()
+	cq:=Cat{"meow"}
+	cq.SayHelloQuiet()
 }
