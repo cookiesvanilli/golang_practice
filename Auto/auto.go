@@ -7,7 +7,7 @@ package main
 import "fmt"
 
 type Automobile interface {
-	car()
+	madeof()
 }
 type Wheels struct {
     numberWheels int
@@ -19,19 +19,19 @@ type Engine struct {
 type Corpus struct {
 	typeOfCar string
 }
-func (w *Wheels) car() {
+func (w *Wheels) madeof() {
 	fmt.Println("Wheels: ", w.numberWheels)
 }
-func (e *Engine) car()  {
+func (e *Engine) madeof()  {
 	fmt.Println("Cylinders: ", e.cylinderNumb)
 	fmt.Println("Fuel: ", e.fuel)
 }
-func (m *Corpus) car()  {
+func (m *Corpus) madeof()  {
 	fmt.Println("Model: ", m.typeOfCar)
 }
 func myCar(list ...Automobile) {
 	for _, a := range list {
-		a.car()
+		a.madeof()
 	}
 }
 func main() {
