@@ -1,40 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Givesavoice interface {
 	sayHello() string
 }
 type Cat struct {
-    greeting string
 }
 type Dog struct {
-	greeting  string
 }
 type Bee struct {
-	greeting  string
 }
-func (c *Cat) sayHello() string { //Cat
-	fmt.Println("Cat: MEOW")
+func (c Cat) sayHello() string { //Cat
 	return "MEOW"
 }
-func (d *Dog) sayHello()  string { //Dog
-	fmt.Println("Dog: WOFF")
+func (d Dog) sayHello()  string { //Dog
 	return "WOFF"
 }
-func (b *Bee) sayHello() string  { //Bird
-	fmt.Println("Bee: BZZ")
+func (b Bee) sayHello() string  { //Bird
 	return "BZZ"
 }
 func animalVoice(list ...Givesavoice) {
 	for _, a := range list {
-		a.sayHello()
+		fmt.Println(reflect.TypeOf(a).Name(), a.sayHello())
 	}
 }
 func main() {
-	c := &Cat{greeting : "meow"}
-	d := &Dog{greeting : "woff"}
-	b := &Bee{greeting : "bzz"}
+	c := Cat{}
+	d := Dog{}
+	b := Bee{}
 	animalVoice(c,d,b)
 }
-
