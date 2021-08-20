@@ -7,56 +7,45 @@ package main
 
 import (
 	"fmt"
-	"math"
+
 )
 
 type Figures interface {
 	perimeter()
 }
-type PointXY struct {
- 	x1, y1 float64
+type Point1 struct {
+ 	x, y int
 }
-type Line struct {
-	PointXY
-	x2, y2 float64
+type Point2 struct {
+	x, y int
+}
+type Line1 struct {
+	Point1
+	Point2
+}
+type Line2 struct {
+	Point1
+	Point2
+}
+type Line3 struct {
+	Point1
+	Point2
 }
 type Triangle struct {
-	Line
-	x3, y3 float64
+	Line1
+	Line2
+	Line3
 }
-func points(x1, y1, x2, y2, x3, y3  float64) float64 {
-	a := math.Sqrt( math.Pow((x2 - x1), 2) + math.Pow((y2-y1), 2))
-	b := math.Sqrt( math.Pow((x3 - x2), 2) + math.Pow((y3-y2), 2))
-	c := math.Sqrt( math.Pow((x1 - x3), 2) + math.Pow((y1-y3), 2))
-	return (a + b + c)/2
-}
-func shapes(list ...Figures) {
-	for _, a := range list {
-		a.perimeter()
-	}
-}
+
 //Triangle
 func (t *Triangle) perimeter(){
-	x := points(t.x1, t.y1, t.x2, t.y2, t.x3, t.y3)
-	fmt.Println(x)
+	a:= Line1{Point1{x: 3, y: 3}, Point2{x: 5, y: 4}}
+	b:= Line2{Point1{x: 4, y: 3}, Point2{x: 3, y: 3}}
+	c:= Line3{Point1{x: 5, y: 3}, Point2{x: 3, y: 7}}
+
 }
 func main()  {
-	/*l:= new(Triangle)
-	l.x1 = 1
-	l.y1 = 2
-	l.x2 = 3
-	l.y2 = 2
-	l.x3 = 5
-	l.y3 = 3*/
-	s:= &Triangle{
-		Line: Line{PointXY{
-			x1: 3,
-			y1: 5,
-		},3,2},
-		x3:   6,
-		y3:   2,
-	}
-	shapes(s)
+
 }
 
 
