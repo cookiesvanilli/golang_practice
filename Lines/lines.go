@@ -25,6 +25,12 @@ type Triangle struct {
 	l2 Line
 	l3 Line
 }
+type Square struct {
+	l1 Line
+	l2 Line
+	l3 Line
+	l4 Line
+}
 func (p Point) perimeter() int {
 	return 0
 }
@@ -38,12 +44,23 @@ func (l Line) perimeter() int {
 func (t Triangle) perimeter() int {
 	return t.l1.perimeter() + t.l2.perimeter() + t.l3.perimeter()
 }
+func (s Square) perimeter() int {
+	return s.l1.perimeter() + s.l2.perimeter() + s.l3.perimeter() + s.l4.perimeter()
+}
+
 func main()  {
 	t := Triangle{l1: Line{p1: Point{9,5}, p2: Point{5,2}},
 				  l2: Line{p1: Point{7,7}, p2: Point{3,6}},
 				  l3: Line{p1: Point{4,9}, p2: Point{2,7}}}
 	t.perimeter()
-	fmt.Println(t.perimeter())
+	fmt.Println("Triangle: ", t.perimeter())
+	s := Square{l1: Line{p1: Point{9,5}, p2: Point{5,2}},
+		l2: Line{p1: Point{7,7}, p2: Point{3,6}},
+		l3: Line{p1: Point{4,9}, p2: Point{2,7}},
+	    l4: Line{p1: Point{3,1}, p2: Point{5,0}}}
+	s.perimeter()
+	fmt.Println("Square: ", s.perimeter())
+
 }
 
 
