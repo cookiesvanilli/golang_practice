@@ -4,11 +4,11 @@
 //Собрать из этого набора несколько разных видов машин.
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type Automobile interface {
-	madeof()
-}
+type Tracks struct {}
 type Wheels struct {
     numberWheels int
 }
@@ -19,25 +19,46 @@ type Engine struct {
 type Corpus struct {
 	typeOfCar string
 }
-func (w *Wheels) madeof() {
+type Car struct {
+	w Wheels
+	e Engine
+	c Corpus
+}
+type Tractor struct {
+	t Tracks
+	e Engine
+	c Corpus
+}
+func (t Tracks) madeof() {
+	fmt.Println("Tracks")
+}
+func (w Wheels) madeof() {
 	fmt.Println("Wheels: ", w.numberWheels)
 }
-func (e *Engine) madeof()  {
+func (e Engine) madeof()  {
 	fmt.Println("Cylinders: ", e.cylinderNumb)
 	fmt.Println("Fuel: ", e.fuel)
 }
-func (m *Corpus) madeof()  {
+func (m Corpus) madeof()  {
 	fmt.Println("Model: ", m.typeOfCar)
 }
-func myCar(list ...Automobile) {
-	for _, a := range list {
-		a.madeof()
-	}
+func (c Car) madeof() {
+	c.w.madeof()
+	c.e.madeof()
+	c.c.madeof()
+}
+func (t Tractor) madeof() {
+	t.t.madeof()
+	t.e.madeof()
+	t.c.madeof()
 }
 func main() {
-	w := &Wheels{numberWheels: 4}
-	e := &Engine{cylinderNumb: 8, fuel: "diesel"}
-	m := &Corpus{typeOfCar: "sedan"}
-	car := []Automobile{w, e, m}
-	myCar(car...)
+	w := Wheels{numberWheels: 4}
+	e := Engine{cylinderNumb: 8, fuel: "diesel"}
+	c := Corpus{typeOfCar: "sedan"}
+	car := Car{w, e, c}
+	car.madeof()
+	t := Tracks{}
+	tractor := Tractor{t, e, c}
+	tractor.madeof()
 }
