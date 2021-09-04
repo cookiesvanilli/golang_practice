@@ -22,6 +22,8 @@ func main() {
 		fmt.Println(scanner.Text())
 	}
 
+	file.Seek(0,0)//указатель сместили на начало
+
 	fmt.Println("--- Reader---")
 	reader := bufio.NewReader(file)
 	for {
