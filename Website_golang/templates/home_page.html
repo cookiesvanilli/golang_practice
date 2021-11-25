@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/examples/cover/cover.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div class="d-flex justify-content-between">
+            <h3 class="float-md-start mb-0">IK</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/contacts/">Contacts</a>
+            </nav>
+        </div>
+    </header>
+
+   <main class="px-3">
+        <h4>Main page.</h4>
+        <p class="lead">
+            User: {{ .Name }}<br>
+            Age: {{ .Age }}<br>
+            Money: {{ .Money }}
+        </p>
+        {{ if eq .Name "Bob" }} <!--Если поле name = Bob / ne - not equal, lt <, gt > -->
+        <p class="lead">Hey!</p>
+        {{ else }}
+        <p class="lead">Who are u?</p>
+        {{ end }}
+
+        <p class="lead">
+            <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+        </p>
+    </main>
+</div>
+</body>
+</html>
